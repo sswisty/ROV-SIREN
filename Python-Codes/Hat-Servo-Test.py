@@ -31,7 +31,7 @@ tictime *= 1000             # time of each tic (microseconds)
 center /= tictime           # set center to tic of 1100 microseconds
 
 center = round(center)
-center = 307
+center = 307 
 
 # Define the thruster channels
 thruster1 = 0
@@ -39,27 +39,33 @@ thruster1 = 0
 # Initilize
 print "Initilizing ..."
 hat.setPWM(thruster1, 0, center)
-time.sleep(5)
+#
+time.sleep(100)
 
+cycle = 1
 
 # make a loop to change the thrust value
 while (True):
+
+    print "Cycle no.", cycle
     
     hat.setPWM(thruster1, 0, center)
     print "Thruster stopped"
     time.sleep(1.5)
-    
-    hat.setPWM(thruster1, 0, center+75)
-    print "Thruster forward!"
-    time.sleep(3)
-    
-    hat.setPWM(thruster1, 0, center)
-    print "Thruster stopped"
-    time.sleep(1.5)
-    
-    hat.setPWM(thruster1, 0, center-75)
-    print "Thruster reverse! \n"
-    time.sleep(3)
+##    
+##    hat.setPWM(thruster1, 0, center+75)
+##    print "Thruster forward!"
+##    time.sleep(3)
+##    
+##    hat.setPWM(thruster1, 0, center)
+##    print "Thruster stopped"
+##    time.sleep(1.5)
+##    
+##    hat.setPWM(thruster1, 0, center-75)
+##    print "Thruster reverse! \n"
+##    time.sleep(3)
+
+    cycle += 1
 
 
 
