@@ -11,14 +11,14 @@ import time     # may not be necessary for final build
 hat = PWM(0x40)
 
 # Set the desired frequency for the servos (400 Hz)
-f = 400
+f = 50
 hat.setPWMFreq(f)
 
 
 # ================== CONTROLL THRUSTERS ============================
 
 # Deadzone is 1500 microseconds. Calculate the tic number and store as center
-f = 400.00000        # decimals force precision
+f =50.00000          # decimals force precision
 
 center = 1500        # microseconds
 
@@ -30,28 +30,35 @@ tictime *= 1000             # time of each tic (microseconds)
 
 center /= tictime           # set center to tic of 1100 microseconds
 
+center = round(center)
+center = 307
 
 # Define the thruster channels
 thruster1 = 0
+
+# Initilize
+print "Initilizing ..."
+hat.setPWM(thruster1, 0, center)
+time.sleep(5)
 
 
 # make a loop to change the thrust value
 while (True):
     
     hat.setPWM(thruster1, 0, center)
-    print "Thruster stopped \n"
+    print "Thruster stopped"
     time.sleep(1.5)
     
     hat.setPWM(thruster1, 0, center+75)
-    print "Thruster forward! \n"
+    print "Thruster forward!"
     time.sleep(3)
     
     hat.setPWM(thruster1, 0, center)
-    print "Thruster stopped \n"
+    print "Thruster stopped"
     time.sleep(1.5)
     
     hat.setPWM(thruster1, 0, center-75)
-    print "Thruster forward! \n"
+    print "Thruster reverse! \n"
     time.sleep(3)
 
 
