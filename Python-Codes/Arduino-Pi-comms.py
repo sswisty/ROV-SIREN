@@ -34,7 +34,7 @@ while True:
 
     print 'Sent: ',test1, test2
 
-    time.sleep(.25)
+    time.sleep(.65)
 
     yaw = ReadData()
     pitch = ReadData()
