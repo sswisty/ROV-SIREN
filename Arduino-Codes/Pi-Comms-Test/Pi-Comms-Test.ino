@@ -39,7 +39,7 @@ void loop() {
     
     SendValues();
     
-    if (OnOff == 5)
+    if (OnOff >= 5)
     {
       digitalWrite(LEDPin, HIGH);
     }

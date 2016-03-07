@@ -14,7 +14,9 @@ int ReadValues()
 int SendValues()
 {
   
-  
+  Serial.println(yaw);
+  Serial.println(pitch);
+  Serial.println(roll);
   
   
 }
