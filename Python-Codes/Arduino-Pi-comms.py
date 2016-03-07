@@ -7,28 +7,46 @@ import random
 
 arduino = serial.Serial('/dev/ttyACM0',115200)
 
+def SendData(value):
+    arduino.write(value)
+    #arduino.write(str(value2).encode())
+     
+    
+def ReadData():
+    bytesToRead = arduino.inWaiting()
+    data = arduino.readline(bytesToRead)
+    if data != '':
+        data = int(data)
+    return data
+    
 
 
 while True:
+    
     test1 = random.randint(0, 10)
     test2 = random.randint(0, 100) # Create random integers to send to arduino
 
-    arduino.write(str(test1).encode())
-    arduino.write(str(test2).encode())
+    test1 = str(test1)
+    test2 = str(test2)
+    data = str(test1 + ',' + test2)
+    SendData(data)
+    
 
     print 'Sent: ',test1, test2
 
-    bytesToRead = arduino.inWaiting()
-    yaw = arduino.read(bytesToRead)
+    time.sleep(.25)
 
-    bytesToRead = arduino.inWaiting()
-    pitch = arduino.read(bytesToRead)
+    yaw = ReadData()
+    pitch = ReadData()
+    roll = ReadData()
 
-    bytesToRead = arduino.inWaiting()
-    roll = arduino.read(bytesToRead)
 
     print 'Yaw: ', yaw
-    print 'Pitch: ',pitch
+    print 'Pitch: ', pitch
     print 'Roll: ', roll
+
+    print ' \n' 
+
+    #time.sleep(.75)
 
     
