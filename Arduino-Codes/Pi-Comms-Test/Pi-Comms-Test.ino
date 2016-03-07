@@ -31,22 +31,33 @@ void loop() {
   
   if (Serial.available() > 0)
   {
-    ReadValues();
     
-    yaw = random(100);
-    pitch = random(75);
-    roll = random(82);
+    if (ReadValues() != -1){
     
-    SendValues();
+      yaw = random(100);
+      pitch = random(75);
+      roll = random(82);
     
-    if (OnOff >= 5)
-    {
-      digitalWrite(LEDPin, HIGH);
+      SendValues();
+    
+    
+      if (OnOff >= 5){
+        digitalWrite(LEDPin, HIGH);
+      }
+      else{
+        digitalWrite(LEDPin, LOW);
+      }
+    
+      if (test >= 50){
+        digitalWrite(11, HIGH);
+      }
+      else{
+        digitalWrite(11, LOW);
+      }
+      
     }
-    else
-    {
-      digitalWrite(LEDPin, LOW);
-    }
+    
+    
   }
   
 
