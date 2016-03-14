@@ -11,7 +11,7 @@ import time     # may not be necessary for final build
 hat = PWM(0x40)
 
 # Set the desired frequency for the servos (400 Hz)
-f = 50
+f = 48
 hat.setPWMFreq(f)
 
 
@@ -52,18 +52,18 @@ while (True):
     hat.setPWM(thruster1, 0, center)
     print "Thruster stopped"
     time.sleep(1.5)
-##    
-##    hat.setPWM(thruster1, 0, center+75)
-##    print "Thruster forward!"
-##    time.sleep(3)
-##    
-##    hat.setPWM(thruster1, 0, center)
-##    print "Thruster stopped"
-##    time.sleep(1.5)
-##    
-##    hat.setPWM(thruster1, 0, center-75)
-##    print "Thruster reverse! \n"
-##    time.sleep(3)
+    
+    hat.setPWM(thruster1, 0, center+75)
+    print "Thruster forward!"
+    time.sleep(3)
+    
+    hat.setPWM(thruster1, 0, center)
+    print "Thruster stopped"
+    time.sleep(1.5)
+    
+    hat.setPWM(thruster1, 0, center-75)
+    print "Thruster reverse! \n"
+    time.sleep(3)
 
     cycle += 1
 
