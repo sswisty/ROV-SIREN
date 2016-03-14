@@ -40,7 +40,7 @@ thruster1 = 0
 print "Initilizing ..."
 hat.setPWM(thruster1, 0, center)
 #
-time.sleep(100)
+time.sleep(3)
 
 cycle = 1
 
