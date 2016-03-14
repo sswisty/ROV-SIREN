@@ -18,7 +18,7 @@ hat.setPWMFreq(f)
 # ================== CONTROLL THRUSTERS ============================
 
 # Deadzone is 1500 microseconds. Calculate the tic number and store as center
-f =50.00000          # decimals force precision
+f =48.00000          # decimals force precision
 
 center = 1500        # microseconds
 
@@ -31,7 +31,7 @@ tictime *= 1000             # time of each tic (microseconds)
 center /= tictime           # set center to tic of 1100 microseconds
 
 center = round(center)
-center = 307 
+center = 294                # 307 still works
 
 # Define the thruster channels
 thruster1 = 0
