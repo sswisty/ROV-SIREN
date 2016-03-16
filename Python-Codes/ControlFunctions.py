@@ -51,8 +51,52 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
             WriteMotor(thruster3, Correction(LY, LX, '+'))
             WriteMotor(thruster4, Correction(LY, LX, '-'))
 
+    # ================ Vertical Motion =========================
+
+    if (RY == 0):
+        # No Pitch control
+        if (RT != 0 and LT == 0):
+            # Descend
+            WriteMotor(thruster5, RT)   # Make all - ?
+            WriteMotor(thruster6, RT)
+            WriteMotor(thruster7, RT)
+            WriteMotor(thruster8, RT)
+        elif (RT == 0 and LT != 0):
+            # Ascend
+            WriteMotor(thruster5, LT)
+            WriteMotor(thruster6, LT)
+            WriteMotor(thruster7, LT)
+            WriteMotor(thruster8, LT)
+        elif (RT != 0 and LT != 0):
+            # Do nothing
+            WriteMotor(thruster5, 0)
+            WriteMotor(thruster6, 0)
+            WriteMotor(thruster7, 0)
+            WriteMotor(thruster8, 0)
+
+    elif (RY != 0):
+        # Pitch control
+        if (RT != 0 and LT == 0):
+            # Descend + Pitch
+            WriteMotor(thruster5, )
+            WriteMotor(thruster6, )
+            WriteMotor(thruster7, )
+            WriteMotor(thruster8, )
+        elif (RT == 0 and LT != 0):
+            # Ascend + Pitch
+            WriteMotor(thruster5, )
+            WriteMotor(thruster6, )
+            WriteMotor(thruster7, )
+            WriteMotor(thruster8, )
+        elif (RT != 0 and LT != 0):
+            # Only Pitch
+            WriteMotor(thruster5, RY) # Figure out which are + and -
+            WriteMotor(thruster6, RY)
+            WriteMotor(thruster7, RY)
+            WriteMotor(thruster8, RY)
 
 
+    # This control code includes no roll control. That will be added later
 
 
 def WriteMotor(Thruster, Value):
