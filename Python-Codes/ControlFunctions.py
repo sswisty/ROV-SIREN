@@ -39,7 +39,7 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
             WriteMotor(thruster4, Correction(LY, RX, '+'))
         elif (LY == 0 and LX != 0):
             # Yaw and Left/right
-            WriteMotor(thruster1, )
+            WriteMotor(thruster1, )     # Yaw and left/right
             WriteMotor(thruster2, )
             WriteMotor(thruster3, )
             WriteMotor(thruster4, )
@@ -57,10 +57,10 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
         # No Pitch control
         if (RT != 0 and LT == 0):
             # Descend
-            WriteMotor(thruster5, RT)   # Make all - ?
-            WriteMotor(thruster6, RT)
-            WriteMotor(thruster7, RT)
-            WriteMotor(thruster8, RT)
+            WriteMotor(thruster5, -RT)   # All are (-) as RT is provided as a
+            WriteMotor(thruster6, -RT)   # positive value. We want (-) to go
+            WriteMotor(thruster7, -RT)   # down!
+            WriteMotor(thruster8, -RT)
         elif (RT == 0 and LT != 0):
             # Ascend
             WriteMotor(thruster5, LT)
@@ -78,7 +78,7 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
         # Pitch control
         if (RT != 0 and LT == 0):
             # Descend + Pitch
-            WriteMotor(thruster5, )
+            WriteMotor(thruster5, )  # Pitch and up/down
             WriteMotor(thruster6, )
             WriteMotor(thruster7, )
             WriteMotor(thruster8, )
@@ -90,8 +90,8 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
             WriteMotor(thruster8, )
         elif (RT != 0 and LT != 0):
             # Only Pitch
-            WriteMotor(thruster5, RY) # Figure out which are + and -
-            WriteMotor(thruster6, RY)
+            WriteMotor(thruster5, -RY) 
+            WriteMotor(thruster6, -RY)
             WriteMotor(thruster7, RY)
             WriteMotor(thruster8, RY)
 
@@ -102,6 +102,7 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
 def WriteMotor(Thruster, Value):
     # This writes the PWM setting to the ESC
     hat.setPWM(Thruster, 0, center + Value)
+    # Value should be limited to +- 40 to keep under power restrictions
 
 
 
