@@ -8,7 +8,7 @@
 
 # Necessary libraries
 from Adafruit_PWM_Servo_Driver import PWM
-from ControlFunctions import MotorControl
+from ControlFunctions import MotorControl, WriteMotor, Correction
 
 import time     # may not be necessary for final build
 

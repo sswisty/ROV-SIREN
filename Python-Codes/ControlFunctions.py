@@ -78,16 +78,16 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
         # Pitch control
         if (RT != 0 and LT == 0):
             # Descend + Pitch
-            WriteMotor(thruster5, )  # Pitch and up/down
-            WriteMotor(thruster6, )
-            WriteMotor(thruster7, )
-            WriteMotor(thruster8, )
-        elif (RT == 0 and LT != 0):
+            WriteMotor(thruster5, Correction(-RT, -RY, '-'))  # Pitch and down
+            WriteMotor(thruster6, Correction(-RT, -RY, '-'))
+            WriteMotor(thruster7, Correction(-RT, RY, '-'))
+            WriteMotor(thruster8, Correction(-RT, RY, '-'))
+        elif (RT == 0 and LT != 0):  # Pitch and up
             # Ascend + Pitch
-            WriteMotor(thruster5, )
-            WriteMotor(thruster6, )
-            WriteMotor(thruster7, )
-            WriteMotor(thruster8, )
+            WriteMotor(thruster5, Correction(LT, -RY, '+'))
+            WriteMotor(thruster6, Correction(LT, -RY, '+'))
+            WriteMotor(thruster7, Correction(LT, RY, '+'))
+            WriteMotor(thruster8, Correction(LT, RY, '+'))
         elif (RT != 0 and LT != 0):
             # Only Pitch
             WriteMotor(thruster5, -RY) 
@@ -115,4 +115,4 @@ def Correction(value1, value2, sign):
     elif (sign == '-'):
         correctvalue = value1/2 - (value1*value2)/80
 
-    return correctedvalue    
+    return correctvalue    
