@@ -34,7 +34,7 @@ center = 307    # Use this to initilize the thrusters
 
 # Add arduino and PC serial ports
 arduino = serial.Serial('/dev/ttyACM0',115200) # 'serial port',baudrate
-PC = ... # not sure how to do this yet
+PC = ... # setup UDP Sockets
 
 
 # Initilize
@@ -62,6 +62,11 @@ while (Connection_Established):
 
     # map controller values from -40 to +40, no decimals...
     # Eventually build in way to control this value.
+    maxThrust = 40
+    if RX >= maxThrust:
+        RX = maxThrust
+    elif RX <= -maxThrust:
+        RX = -maxThrust
 
     MotorControl(RX,RY,LX,LY,RT,LT)
 
