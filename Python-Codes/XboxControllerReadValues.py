@@ -6,6 +6,8 @@ In actual code start controller with
     XboxCont = XboxController( deadzone = ##, scale = ##, invertYAxis = True)
 where ## represent the max value of the triggers/joysticks and the size of the deadzone
 
+Use GetValues() to read all values from the controller
+
 Provides all values from the xbox controller into code except left thumb...
 
 Pygame must be downloaded for this code to work and can be downloaded at:
