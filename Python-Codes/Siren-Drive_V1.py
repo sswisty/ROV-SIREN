@@ -40,8 +40,16 @@ thruster8 = 14;
 center = 307    # Use this to initilize the thrusters
 
 
-# Add arduino and PC serial ports
+# Add arduino serialport and function to read data
 arduino = serial.Serial('/dev/ttyACM0',115200) # 'serial port',baudrate
+
+def ReadSensor():
+    bytesToRead = arduino.inWaiting()
+    data = arduino.readline(bytesToRead)
+    if data != '':
+        data = int(data)
+    return data
+
 # PC UDP socket built into SendReceive
 
 
@@ -66,11 +74,14 @@ time.sleep(3)
 while True:
 
     # Read pressure and sensor, UDP code works by sending message first
-    temp,pressure = ReadSensors()
+    pressure = ReadSensor() # temp too ...
+    # for inital tests w/o arduino make random numbers to represent pressure
+    # pressure = 50
+    pressure = str(pressure) # Need to send data as a string
     
     # Communication with PC
     # Read in game controller values
-    LX,LY,RX,RY,LT,RT = SendReceive(temp)
+    LX,LY,RX,RY,LT,RT = SendReceive(pressure)
 
     # Use controller values to control thrusters
     MotorControl(RX,RY,LX,LY,RT,LT)
