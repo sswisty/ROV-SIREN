@@ -14,7 +14,7 @@ from random import *
 # Create a TCP/IP socket
 sock_p_t = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-myIP = "169.254.135.74" 
+myIP = "169.254.202.234" 
 
 # Server Addresses
 # Socket Bindings:
