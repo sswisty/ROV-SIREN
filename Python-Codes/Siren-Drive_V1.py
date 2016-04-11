@@ -60,19 +60,24 @@ time.sleep(3)
 
 
 
-
+# ====================================================================
+#    ------------------ Main Loop -----------------------
 
 while True:
+
+    # Read pressure and sensor, UDP code works by sending message first
+    temp,pressure = ReadSensors()
+    
     # Communication with PC
-
     # Read in game controller values
-    LX,LY,RX,RY,LT,RT = SendReceive(message)
+    LX,LY,RX,RY,LT,RT = SendReceive(temp)
 
+    # Use controller values to control thrusters
     MotorControl(RX,RY,LX,LY,RT,LT)
 
     print LX, LY, RX, RY, LT, RT
 
-    #temp,pressure = ReadSensors()
+    
 
     # Sital PID controller
 
