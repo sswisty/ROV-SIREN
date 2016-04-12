@@ -370,50 +370,50 @@ def GetValues():
     elif Lt > 0.05:
         Lt = Lt
 
-    return Lx, Ly, Rx, Ry, Lt, Rt, A, B, X, Y, Lb, Rb, lthumb, rthumb, Back, Start, dpad
+    return Lx, Ly, Rx, Ry, Lt, Rt
 
-try:
-    xboxCont.start()
-    while True:
-        Rx = xboxCont.RTHUMBX
-        Ry = xboxCont.RTHUMBY
-        Lx = xboxCont.LTHUMBX
-        Ly = xboxCont.LTHUMBY
-        Rt = xboxCont.RTRIGGER
-        Lt = xboxCont.LTRIGGER
-        A = xboxCont.A
-        B = xboxCont.B
-        X = xboxCont.X
-        Y = xboxCont.Y
-        Rb = xboxCont.RB
-        Lb = xboxCont.LB
-        rthumb = xboxCont.RIGHTTHUMB
-        lthumb = xboxCont.LEFTTHUMB
-        Back = xboxCont.BACK
-        Start = xboxCont.START
-        dpad = xboxCont.DPAD
-
-        # Balance out Rt, Lt ... (0.05 to balance out sigfigs)
-
-        if Rt > -0.05:
-            Rt = 0
-        elif Rt < 0.05:
-            Rt = -Rt
-
-        if Lt < 0:
-            Lt = 0
-        elif Lt > 0.05:
-            Lt = Lt
-
-        print Lx, Ly, Rx, Ry, Lt, Rt
-        time.sleep(.1)
-        
-except KeyboardInterrupt:
-    print "User Cancelled"
-
-except:
-    print "unexpected error"
-
-finally:
-    xboxCont.stop()
-
+##try:
+##    xboxCont.start()
+##    while True:
+##        Rx = xboxCont.RTHUMBX
+##        Ry = xboxCont.RTHUMBY
+##        Lx = xboxCont.LTHUMBX
+##        Ly = xboxCont.LTHUMBY
+##        Rt = xboxCont.RTRIGGER
+##        Lt = xboxCont.LTRIGGER
+##        A = xboxCont.A
+##        B = xboxCont.B
+##        X = xboxCont.X
+##        Y = xboxCont.Y
+##        Rb = xboxCont.RB
+##        Lb = xboxCont.LB
+##        rthumb = xboxCont.RIGHTTHUMB
+##        lthumb = xboxCont.LEFTTHUMB
+##        Back = xboxCont.BACK
+##        Start = xboxCont.START
+##        dpad = xboxCont.DPAD
+##
+##        # Balance out Rt, Lt ... (0.05 to balance out sigfigs)
+##
+##        if Rt > -0.05:
+##            Rt = 0
+##        elif Rt < 0.05:
+##            Rt = -Rt
+##
+##        if Lt < 0:
+##            Lt = 0
+##        elif Lt > 0.05:
+##            Lt = Lt
+##
+##        print Lx, Ly, Rx, Ry, Lt, Rt
+##        time.sleep(.1)
+##        
+##except KeyboardInterrupt:
+##    print "User Cancelled"
+##
+##except:
+##    print "unexpected error"
+##
+##finally:
+##    xboxCont.stop()
+##
