@@ -1,4 +1,51 @@
+# ================================================================
+#      ----------     Necessary libraries   ------------
+from Adafruit_PWM_Servo_Driver import PWM
+# from ControlFunctions import MotorControl, WriteMotor, Correction
 
+#import socket
+#import sys
+
+#from SendReceive import SendReceive
+
+#import time     # may not be necessary for final build
+
+# ===================================================================
+#    ----------------- Inatilization commands ----------------
+
+# Define the hat over the I2C connection pins
+hat = PWM(0x40)
+
+# Set the desired frequency for the servos (50 Hz)
+f = 48
+hat.setPWMFreq(f)
+
+# Define the thruster pins on the ServoHat
+global thruster1
+global thruster2
+global thruster3
+global thruster4
+global thruster5
+global thruster6
+
+thruster1 = 0;
+thruster2 = 2;
+thruster3 = 4;
+thruster4 = 6;
+thruster5 = 8;
+thruster6 = 10;
+thruster7 = 12;
+thruster8 = 14;
+
+
+center = 307    # Use this to initilize the thrusters
+
+
+# =====================================================================
+# =====================================================================
+#               CONTROL FUNCTIONS
+# =====================================================================
+# =====================================================================
 
 def MotorControl(RX,RY,LX,LY,RT,LT):
 
@@ -39,10 +86,10 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
             WriteMotor(thruster4, Correction(LY, RX, '+'))
         elif (LY == 0 and LX != 0):
             # Yaw and Left/right
-            WriteMotor(thruster1, )     # Yaw and left/right
-            WriteMotor(thruster2, )
-            WriteMotor(thruster3, )
-            WriteMotor(thruster4, )
+            WriteMotor(thruster1, 0)     # Yaw and left/right
+            WriteMotor(thruster2, 0)
+            WriteMotor(thruster3, 0)
+            WriteMotor(thruster4, 0)
         elif (LY != 0 and LX != 0):
             # Yaw and general XY Plane motion...
             #NOT CURRENTLY DOING THIS! Instead general xy-motion
