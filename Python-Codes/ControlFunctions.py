@@ -38,7 +38,7 @@ thruster7 = 12;
 thruster8 = 14;
 
 
-center = 307    # Use this to initilize the thrusters
+center = 295    # Use this to initilize the thrusters
 
 
 # =====================================================================
@@ -86,10 +86,10 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
             WriteMotor(thruster4, Correction(LY, RX, '+'))
         elif (LY == 0 and LX != 0):
             # Yaw and Left/right
-            WriteMotor(thruster1, 0)     # Yaw and left/right
-            WriteMotor(thruster2, 0)
-            WriteMotor(thruster3, 0)
-            WriteMotor(thruster4, 0)
+            WriteMotor(thruster1, Correction(LX, RX, '+'))     # Yaw and left/right
+            WriteMotor(thruster2, Correction(-LX, -RX, '-'))
+            WriteMotor(thruster3, Correction(LX, -RX, '+'))
+            WriteMotor(thruster4, Correction(-LX, RX, '-'))
         elif (LY != 0 and LX != 0):
             # Yaw and general XY Plane motion...
             #NOT CURRENTLY DOING THIS! Instead general xy-motion
