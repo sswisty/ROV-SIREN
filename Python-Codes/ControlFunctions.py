@@ -38,7 +38,7 @@ thruster7 = 12;
 thruster8 = 14;
 
 
-center = 295    # Use this to initilize the thrusters
+center = 307    # Use this to initilize the thrusters
 
 
 # =====================================================================
