@@ -86,18 +86,18 @@ while True:
     
     # Communication with PC
     # Read in game controller values
-    LX,LY,RX,RY,LT,RT = SendReceive(Pressure, Temp)
+    LX,LY,RX,RY,LT,RT,PadUD,PadLR = SendReceive(Pressure, Temp)  # get d-pad values also...
 
     # Use controller values to control thrusters
-    MotorControl(RX,RY,LX,LY,RT,LT) # get d-pad values also...
+    MotorControl(RX,RY,LX,LY,RT,LT)
 
     print LX, LY, RX, RY, LT, RT
 
 
     # Toggle Light (D-Pad UP/DOWN to go up/down 3 levels of brightenss)
-    if PadUp == 1:
+    if PadUD == 1:
         brightness += led_inc
-    if PadDown == 1:
+    if PadUD == -1:
         brightness -= led_inc
 
     if brightness > 1600:

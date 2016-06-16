@@ -370,8 +370,14 @@ def GetValues():
     elif Lt > 0.05:
         Lt = Lt
 
-    return Lx, Ly, Rx, Ry, Lt, Rt
 
+    return Lx, Ly, Rx, Ry, Lt, Rt, dpad
+
+
+while True:
+    Lx, Ly, Rx, Ry, Lt, Rt, dpad = GetValues()
+
+    
 ##try:
 ##    xboxCont.start()
 ##    while True:
