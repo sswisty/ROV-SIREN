@@ -1,7 +1,7 @@
 import socket
 import sys
 
-def SendReceive(message):
+def SendReceive(message1, message2):
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
@@ -11,7 +11,8 @@ def SendReceive(message):
     try:
         # Send Data
         print 'sending "%s"' % message
-        sent = sock.sendto(message, server_address)
+        sent = sock.sendto(message1, server_address)
+        sent = sock.sendto(message2, server_address)
 
         # Receive Response
         Lx, server = sock.recvfrom(4096)
@@ -20,6 +21,8 @@ def SendReceive(message):
         Ry, server = sock.recvfrom(4096)
         Lt, server = sock.recvfrom(4096)
         Rt, server = sock.recvfrom(4096)
+        PadUD, server = sock.recvfrom(4096)
+        PadLR, server = sock.recvfrom(4096)
 
         #print 'Recieved', Lx, Ly, Rx, Ry, Lt, Rt
 
@@ -31,8 +34,9 @@ def SendReceive(message):
         Ry = int(float(Ry))
         Lt = int(float(Lt))
         Rt = int(float(Rt))
+        
 
-        return Lx, Ly, Rx, Ry, Lt, Rt
+        return Lx, Ly, Rx, Ry, Lt, Rt, PadUD, PadLR
 
     finally:
         sock.close()
