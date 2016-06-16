@@ -123,6 +123,9 @@ def MotorControl(RX,RY,LX,LY,RT,LT):
 
     elif (RY != 0):
         # Pitch control
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+        print 'PITCH SHOULD HAPPEN NOW!'
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
         if (RT != 0 and LT == 0):
             # Descend + Pitch
             WriteMotor(thruster5, Correction(-RT, -RY, '-'))  # Pitch and down
