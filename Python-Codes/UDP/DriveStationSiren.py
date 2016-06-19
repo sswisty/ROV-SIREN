@@ -49,23 +49,25 @@ print 'Rasbperry Pi Communications starting up on %s port %s' % server_address_p
 # =======================================================
 # ------------------- MAIN LOOP -------------------------
 # =======================================================
-XboxCont = XboxController( deadzone = 10, scale = 40, invertYAxis = True)
+XboxCont = XboxController( deadzone = 10, scale = 60, invertYAxis = True)
 
 try:
     xboxCont.start()
     while True:
 
         # Read axis values from controller
-        Lx, Ly, Rx, Ry, Lt, Rt = GetValues()
+        Lx, Ly, Rx, Ry, Lt, Rt, PadUD, PadLR = GetValues()
         
         print '\n    Waiting to receive message..'
         print '\n'
         did_timeout = True
         data_ready = select.select([sock_p_t], [], [], max_time)
         if data_ready[0]:
-            data, address = sock_p_t.recvfrom(4096)
+            data1, address = sock_p_t.recvfrom(4096)
+            data2, address = sock_p_t.recvfrom(4096)
             #print 'received %s bytes from %s' % (len(data), address)
-            print '\nROV CURRENT DEPTH: \t', data
+            print '\nROV CURRENT DEPTH: \t', data1
+            print '\nROV CURRENT TEMP: \t', data2
             did_timeout = False
             print '\n'
 
@@ -78,12 +80,15 @@ try:
                 Ry = round(Ry)
                 Lt = round(Lt)
                 Rt = round(Rt)
+                
                 Lx = str(Lx)
                 Ly = str(Ly)
                 Rx = str(Rx)
                 Ry = str(Ry)
                 Lt = str(Lt)
                 Rt = str(Rt)
+                PadUD = str(PadUD)
+                PadLR = str(PadLR)
                 
                 print "\n       Sending values to Siren"
                 sent1 = sock_p_t.sendto(Lx, address)
@@ -92,6 +97,8 @@ try:
                 sent4 = sock_p_t.sendto(Ry, address)
                 sent5 = sock_p_t.sendto(Lt, address)
                 sent6 = sock_p_t.sendto(Rt, address)
+                sent7 = sock_p_t.sendto(PadUD, address)
+                sent8 = sock_p_t.sendto(PadLR, address)
                 #print 'sent %s bytes back to %s' % (sent1, address)
        
                 print '\nInputs: \tLX \tLY \tRX \tRY \tLT \tRT'
