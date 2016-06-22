@@ -34,7 +34,8 @@ def SendReceive(message1, message2):
         Ry = int(float(Ry))
         Lt = int(float(Lt))
         Rt = int(float(Rt))
-        
+        PadUD = int(float(PadUD))
+        PadLR = int(float(PadLR))
 
         return Lx, Ly, Rx, Ry, Lt, Rt, PadUD, PadLR
 
