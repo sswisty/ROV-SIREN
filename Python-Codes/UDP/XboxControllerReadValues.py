@@ -334,7 +334,7 @@ def controlCallBack(xboxControlId, value):
     
 
 #setup xbox controller, set out the deadzone and scale, also invert the Y Axis (for some reason in Pygame negative is up - wierd! 
-xboxCont = XboxController( deadzone = 10, scale = 40, invertYAxis = True)
+xboxCont = XboxController( deadzone = 10, scale = 50, invertYAxis = True)
 
 
 def GetValues():

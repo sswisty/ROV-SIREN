@@ -13,8 +13,8 @@ import os, sys
 from XboxControllerReadValues import *
 
 
-# XBOX CONTROLLER
-XboxCont = XboxController( deadzone = 10, scale = 50, invertYAxis = True)
+# XBOX CONTROLLER (apparently this line isnt needed. It is embedded in XboxControllerReadValues)
+#XboxCont = XboxController( deadzone = 10, scale = 50, invertYAxis = True)
 print 'Controller Established \n'
 
 
